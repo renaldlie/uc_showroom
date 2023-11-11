@@ -7,6 +7,7 @@ import com.example.uc_showroom.helper.Const.BASE_URL
 import com.example.uc_showroom.helper.SSLUtils
 import com.example.uc_showroom.model.CustomerResponse
 import com.example.uc_showroom.retrofit.APIendpoint
+import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,11 +19,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 class TambahPesanan : AppCompatActivity() {
     private lateinit var apiEndPoint: APIendpoint
     private lateinit var btnTambah: Button
+    private lateinit var inputNama: TextInputLayout
+    private lateinit var inputTelp: TextInputLayout
+    private lateinit var inputIdcard: TextInputLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tambah_pesanan)
         btnTambah = findViewById(R.id.btnTambah)
+        inputNama = findViewById(R.id.namaCustomer)
+        inputTelp = findViewById(R.id.notelpCustomer)
+        inputIdcard = findViewById(R.id.idcardCustomer)
+
         SSLUtils.trustAllCertificates()
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -32,7 +40,12 @@ class TambahPesanan : AppCompatActivity() {
         apiEndPoint = retrofit.create(APIendpoint::class.java)
 
         btnTambah.setOnClickListener {
-            val requestBody = APIendpoint.RequestCustomer("Halo", "0182312321", "123456")
+            val namaCustomer = inputNama.editText?.text.toString()
+            val telpCustomer = inputTelp.editText?.text.toString()
+            val idcardCustomer = inputIdcard.editText?.text.toString()
+
+
+            val requestBody = APIendpoint.RequestCustomer("$namaCustomer", "$telpCustomer", "$idcardCustomer")
             val call = apiEndPoint.postData(requestBody)
 
             call.enqueue(object : Callback<CustomerResponse> {
