@@ -6,75 +6,214 @@
     android:layout_height="match_parent"
     tools:context=".TambahPesanan">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nama_customer"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="332dp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-        android:layout_height="60dp"
-        android:layout_marginTop="5dp"
-        app:hintAnimationEnabled="true"
-        app:hintEnabled="false"
-        app:layout_constraintEnd_toEndOf="@+id/nama_customer"
-        app:layout_constraintStart_toStartOf="@+id/nama_customer"
-        app:layout_constraintTop_toBottomOf="@+id/nama_customer">
-
-        <AutoCompleteTextView
-            android:id="@+id/input_customer"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:hint="Nama Customer"
-            android:paddingStart="5dp"
-            android:text=""
-            android:textSize="14sp" />
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnTambah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="TAMBAH"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.471"
+                app:layout_constraintStart_toStartOf="@+id/hargaKendaraan"
+                app:layout_constraintTop_toBottomOf="@+id/hargaKendaraan" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+            <TextView
+                android:id="@+id/txt_customer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Data Customer"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/namaCustomer"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="332dp"
+
+                android:layout_height="60dp"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="false"
+                app:layout_constraintStart_toStartOf="@+id/txt_customer"
+                app:layout_constraintTop_toBottomOf="@+id/txt_customer">
+
+                <AutoCompleteTextView
+                    android:id="@+id/input_idcard_customer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="Nama Customer"
+                    android:paddingStart="5dp"
+                    android:text=""
+                    android:textSize="14sp" />
 
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/notelpCustomer"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/namaCustomer"
+                app:layout_constraintStart_toStartOf="@+id/namaCustomer"
+                app:layout_constraintTop_toBottomOf="@+id/namaCustomer">
 
-    <TextView
-        android:id="@+id/txt_customer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Data Customer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_notelp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nomor Telepon" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nama_customer"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="332dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/idcardCustomer"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/notelpCustomer"
+                app:layout_constraintStart_toStartOf="@+id/notelpCustomer"
+                app:layout_constraintTop_toBottomOf="@+id/notelpCustomer">
 
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        app:hintAnimationEnabled="true"
-        app:hintEnabled="false"
-        app:layout_constraintEnd_toEndOf="@+id/dropdown_petugas"
-        app:layout_constraintStart_toStartOf="@+id/txt_customer"
-        app:layout_constraintTop_toBottomOf="@+id/txt_customer">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_idcard"
+                    android:layout_width="match_parent"
 
-        <AutoCompleteTextView
-            android:id="@+id/input_customer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:hint="Nama Customer"
-            android:paddingStart="5dp"
-            android:text=""
-            android:textSize="14sp" />
+                    android:layout_height="wrap_content"
+                    android:hint="ID Kartu" />
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/txt_kendaraan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kendaraan"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/idcardCustomer"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/idcardCustomer"
+                app:layout_constraintTop_toBottomOf="@+id/idcardCustomer" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/jenisKendaraan"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="332dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/idcardCustomer"
+                app:layout_constraintStart_toStartOf="@+id/txt_kendaraan"
+                app:layout_constraintTop_toBottomOf="@+id/txt_kendaraan">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_jenis"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:hint="Jenis Kendaraan" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/modelKendaraan"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/jenisKendaraan"
+                app:layout_constraintStart_toStartOf="@+id/jenisKendaraan"
+                app:layout_constraintTop_toBottomOf="@+id/jenisKendaraan">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_model"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:hint="Model" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tahunKendaraan"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/modelKendaraan"
+                app:layout_constraintStart_toStartOf="@+id/modelKendaraan"
+                app:layout_constraintTop_toBottomOf="@+id/modelKendaraan">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:hint="Tahun" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/jumlahpenumpangKendaraan"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/tahunKendaraan"
+                app:layout_constraintStart_toStartOf="@+id/tahunKendaraan"
+                app:layout_constraintTop_toBottomOf="@+id/tahunKendaraan">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:hint="Jumlah Penumpang" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/manufakturKendaraan"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/jumlahpenumpangKendaraan"
+                app:layout_constraintStart_toStartOf="@+id/jumlahpenumpangKendaraan"
+                app:layout_constraintTop_toBottomOf="@+id/jumlahpenumpangKendaraan">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:hint="Manufaktur" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/hargaKendaraan"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/manufakturKendaraan"
+                app:layout_constraintStart_toStartOf="@+id/manufakturKendaraan"
+                app:layout_constraintTop_toBottomOf="@+id/manufakturKendaraan">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:hint="Harga" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
