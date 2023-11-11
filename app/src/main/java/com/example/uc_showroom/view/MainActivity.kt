@@ -10,6 +10,7 @@ import com.example.uc_showroom.helper.SSLUtils
 class MainActivity : AppCompatActivity() {
 
     private lateinit var buttonTambah : Button
+    private lateinit var buttonDetailPesanan : Button
     private lateinit var buttonDetailCustomer : Button
     private lateinit var btnUploadImages : Button
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         buttonTambah = findViewById(R.id.btntambah)
+        buttonDetailPesanan = findViewById(R.id.btnpesananDetail)
         buttonDetailCustomer = findViewById(R.id.btncustomerDetail)
         btnUploadImages = findViewById(R.id.btnUploadImage)
 
@@ -32,9 +34,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btnUploadImages.setOnClickListener {
 
-            val intent = Intent(this, upload::class.java)
+
+        buttonDetailPesanan.setOnClickListener {
+
+            val intent = Intent(this, DetailPesanan::class.java)
             startActivity(intent)
         }
 

@@ -34,10 +34,10 @@ class CustomerDetail : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val gson = GsonBuilder().setLenient().create()
+
         val retrofit = Retrofit.Builder()
             .baseUrl(Const.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         apiEndPoint = retrofit.create(APIendpoint::class.java)
@@ -63,6 +63,7 @@ class CustomerDetail : AppCompatActivity() {
             override fun onFailure(call: Call<CustomerDataResponse>, t: Throwable) {
                 // Handle network failure
                 Log.e("YourActivity", "Network Failure: ${t.message}")
+
                 // Handle error UI update if needed
             }
         })

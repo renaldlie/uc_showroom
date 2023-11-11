@@ -31,7 +31,7 @@ class CustomerAdapter(private val context: Context) :
     // Binds the data to the TextView in each list item
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val customer = dataList[position]
-        holder.nameCustomer.text = customer.nama
+        holder.nameCustomer.text = customer.nama.toString()
         holder.notelpCustomer.text = customer.notelp.toString()
         holder.idkartuCustomer.text = customer.id_card.toString()
     }

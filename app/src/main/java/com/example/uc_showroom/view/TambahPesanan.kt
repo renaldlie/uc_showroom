@@ -1,6 +1,7 @@
 package com.example.uc_showroom.view
 
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -12,6 +13,7 @@ import com.example.uc_showroom.R
 import com.example.uc_showroom.helper.Const.BASE_URL
 import com.example.uc_showroom.helper.SSLUtils
 import com.example.uc_showroom.model.CustomerResponse
+import com.example.uc_showroom.model.PesananResponse
 import com.example.uc_showroom.retrofit.APIendpoint
 import com.google.android.material.textfield.TextInputLayout
 
@@ -21,7 +23,6 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-// Import statements...
 
 class TambahPesanan : AppCompatActivity() {
     private lateinit var apiEndPoint: APIendpoint
@@ -82,6 +83,7 @@ class TambahPesanan : AppCompatActivity() {
         apiEndPoint = retrofit.create(APIendpoint::class.java)
 
         btnTambah.setOnClickListener {
+            Toast.makeText(this@TambahPesanan, "Loading!", Toast.LENGTH_SHORT).show()
             val namaCustomer = inputNama.editText?.text.toString()
             val telpCustomer = inputTelp.editText?.text.toString()
             val idcardCustomer = inputIdcard.editText?.text.toString()
@@ -93,7 +95,9 @@ class TambahPesanan : AppCompatActivity() {
 
 
             val requestBody = APIendpoint.RequestCustomer("$namaCustomer", "$telpCustomer", "$idcardCustomer")
+            val requestPesanan = APIendpoint.RequestPesanan("$namaCustomer","3",20000,"2000000")
             val call = apiEndPoint.postData(requestBody)
+            val callPesan = apiEndPoint.postPesanan(requestPesanan)
 
             call.enqueue(object : Callback<CustomerResponse> {
                 override fun onResponse(
@@ -101,7 +105,9 @@ class TambahPesanan : AppCompatActivity() {
                     response: Response<CustomerResponse>
                 ) {
                     if (response.isSuccessful) {
+                        Toast.makeText(this@TambahPesanan, "Create Customer Successful!", Toast.LENGTH_SHORT).show()
                         val customerResponse: CustomerResponse? = response.body()
+
 
                         // Handle the customerResponse here on the main thread if needed
                         runOnUiThread {
@@ -111,6 +117,7 @@ class TambahPesanan : AppCompatActivity() {
                         }
                     } else {
                         // Handle error response
+                        Toast.makeText(this@TambahPesanan, "Create Customer Error!", Toast.LENGTH_SHORT).show()
                         println("Error: ${response.code()}")
                         // Handle error UI update if needed
                     }
@@ -118,13 +125,25 @@ class TambahPesanan : AppCompatActivity() {
 
                 override fun onFailure(call: Call<CustomerResponse>, t: Throwable) {
                     // Handle network failure
+                    Toast.makeText(this@TambahPesanan, "Create Customer Successful!", Toast.LENGTH_SHORT).show()
                     println("Network Failure: ${t.message}")
                     // Handle error UI update if needed
                 }
-            })
+            }
+
+            )
+
+
+
         }
 
+
+
+
         btnUpload.setOnClickListener {
+
+               val intent = Intent(this, upload::class.java)
+                startActivity(intent)
 
         }
 
