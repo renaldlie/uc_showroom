@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.uc_showroom.R
 import com.example.uc_showroom.model.CustomerData
+import com.example.uc_showroom.model.CustomerDataResponse
 import com.example.uc_showroom.model.CustomerResponse
 
 class CustomerAdapter(private val context: Context) :

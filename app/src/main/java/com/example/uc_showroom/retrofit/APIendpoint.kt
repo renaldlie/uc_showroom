@@ -2,31 +2,40 @@ package com.example.uc_showroom.retrofit
 
 import com.example.uc_showroom.helper.Const.END_POINT_CREATE
 import com.example.uc_showroom.helper.Const.END_POINT_DELETE
-import com.example.uc_showroom.helper.Const.END_POINT_READ
 import com.example.uc_showroom.helper.Const.END_POINT_UPDATE
-import com.example.uc_showroom.model.CustomerData
+import com.example.uc_showroom.model.CustomerDataResponse
 import com.example.uc_showroom.model.CustomerResponse
 import com.google.gson.annotations.SerializedName
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Query
 
+
 interface APIendpoint {
+
+
+
+
 
     // Create Customer
     @POST(END_POINT_CREATE)
     fun postData(@Body request: RequestCustomer): Call<CustomerResponse>
     // Read Customer
-    @GET(END_POINT_READ)
-    fun readData(@Query("id_customer") idCustomer: Int): Call<CustomerResponse>
+    @GET("customer.php?api=read")
+    fun readData(@Query("id") id: Int): Call<CustomerDataResponse>
     // Update Customer
     @POST(END_POINT_UPDATE)
     suspend fun updateData(): List<CustomerResponse>
     //Delete Customer
     @POST(END_POINT_DELETE)
     fun deleteData(@Body request: DeleteCustomer): Call<CustomerResponse>
+
+
 
     data class RequestCustomer(
         @SerializedName("nama") val nama: String,

@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".view.upload"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity_upload"
+            android:exported="false" />
+        <activity
             android:name=".view.CustomerDetail"
             android:exported="false" />
         <activity

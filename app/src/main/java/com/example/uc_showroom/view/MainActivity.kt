@@ -11,12 +11,14 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var buttonTambah : Button
     private lateinit var buttonDetailCustomer : Button
+    private lateinit var btnUploadImages : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         buttonTambah = findViewById(R.id.btntambah)
         buttonDetailCustomer = findViewById(R.id.btncustomerDetail)
+        btnUploadImages = findViewById(R.id.btnUploadImage)
 
         buttonTambah.setOnClickListener {
             SSLUtils.trustAllCertificates()
@@ -27,6 +29,12 @@ class MainActivity : AppCompatActivity() {
         buttonDetailCustomer.setOnClickListener {
             SSLUtils.trustAllCertificates()
             val intent = Intent(this, CustomerDetail::class.java)
+            startActivity(intent)
+        }
+
+        btnUploadImages.setOnClickListener {
+
+            val intent = Intent(this, upload::class.java)
             startActivity(intent)
         }
 

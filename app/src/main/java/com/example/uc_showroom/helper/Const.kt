@@ -4,16 +4,28 @@ object Const {
 
     const val BASE_URL: String = "http://192.168.0.110/ucshowroom/"
 
-    // Cek Tiket
+    // Create Customer
     const val END_POINT_CREATE: String = "customer.php?api=signup"
 
-    // Cek Customer
+    // Read Customer
     const val END_POINT_READ: String = "customer.php?api=read"
 
-    // Cek Nota
+    // Update Customer
     const val END_POINT_UPDATE: String = "customer.php?api=update"
 
-    // Detail Nota By Sale
+    // Delete Customer
     const val END_POINT_DELETE: String = "customer.php?api=delete&id="
-    //
+
+    //Create Pesanan
+    const val END_POINT_CREATE_PESANAN: String = "pesanan.php?api=create"
+
+    //Read Pesanan
+    const val END_POINT_READ_PESANAN: String = "pesanan.php?api=read"
+
+    //Update Pesanan
+    const val END_POINT_UPDATE_PESANAN: String = "pesanan.php?api=update"
+
+    //Delete Pesanan
+    const val END_POINT_DELETE_PESANAN: String = "pesanan.php?api=delete"
+
 }
