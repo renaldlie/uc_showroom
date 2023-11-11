@@ -1,7 +1,8 @@
-package com.example.uc_showroom
+package com.example.uc_showroom.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.uc_showroom.R
 
 class DetailPesanan : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,8 +1,9 @@
-package com.example.uc_showroom
+package com.example.uc_showroom.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.example.uc_showroom.R
 import com.example.uc_showroom.helper.Const.BASE_URL
 import com.example.uc_showroom.helper.SSLUtils
 import com.example.uc_showroom.model.CustomerResponse

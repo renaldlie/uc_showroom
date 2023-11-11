@@ -3,7 +3,7 @@ package com.example.uc_showroom.model
 import com.google.gson.annotations.SerializedName
 
 data class CustomerResponse(
-    val data: CustomerData
+    val data: List<CustomerData>
 )
 
 data class CustomerData(
