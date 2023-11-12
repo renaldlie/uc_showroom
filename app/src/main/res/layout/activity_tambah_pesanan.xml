@@ -14,19 +14,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/btnTambah"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="TAMBAH"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/hargaKendaraan"
-                app:layout_constraintTop_toBottomOf="@+id/hargaKendaraan"
-                app:layout_constraintVertical_bias="0.222" />
-
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="0dp"
@@ -111,7 +98,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/idcardCustomer"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/idcardCustomer"
-                app:layout_constraintTop_toBottomOf="@+id/idcardCustomer" />
+                app:layout_constraintTop_toBottomOf="@+id/btnTambah" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/jenisKendaraan"
@@ -215,16 +202,89 @@
 
                     android:layout_height="wrap_content"
                     android:hint="Harga" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btnUpload"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="upload"
+                android:layout_marginTop="10dp"
+                android:text="upload kartu"
                 app:layout_constraintEnd_toEndOf="@+id/hargaKendaraan"
+                app:layout_constraintStart_toStartOf="@+id/hargaKendaraan"
                 app:layout_constraintTop_toBottomOf="@+id/hargaKendaraan" />
+
+            <Button
+                android:id="@+id/btnTambah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TAMBAH"
+                app:layout_constraintEnd_toEndOf="@+id/idcardCustomer"
+                app:layout_constraintStart_toStartOf="@+id/idcardCustomer"
+                app:layout_constraintTop_toBottomOf="@+id/idcardCustomer" />
+
+            <TextView
+                android:id="@+id/txtPesanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pesanan"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="@+id/hargaKendaraan"
+                app:layout_constraintTop_toBottomOf="@+id/btnUpload" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputKendaraanid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/hargaKendaraan"
+                app:layout_constraintStart_toStartOf="@+id/txtPesanan"
+                app:layout_constraintTop_toBottomOf="@+id/txtPesanan">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Id Kendaraan" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputJumlah"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/inputKendaraanid"
+                app:layout_constraintStart_toStartOf="@+id/inputKendaraanid"
+                app:layout_constraintTop_toBottomOf="@+id/inputKendaraanid">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Jumlah" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputTotal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/inputJumlah"
+                app:layout_constraintStart_toStartOf="@+id/inputJumlah"
+                app:layout_constraintTop_toBottomOf="@+id/inputJumlah">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Harga" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnTambahpesan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="tambah pesanan"
+                app:layout_constraintEnd_toEndOf="@+id/inputTotal"
+                app:layout_constraintStart_toStartOf="@+id/inputTotal"
+                app:layout_constraintTop_toBottomOf="@+id/inputTotal" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

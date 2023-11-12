@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonTambah : Button
     private lateinit var buttonDetailPesanan : Button
     private lateinit var buttonDetailCustomer : Button
-    private lateinit var btnUploadImages : Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         buttonTambah = findViewById(R.id.btntambah)
         buttonDetailPesanan = findViewById(R.id.btnpesananDetail)
         buttonDetailCustomer = findViewById(R.id.btncustomerDetail)
-        btnUploadImages = findViewById(R.id.btnUploadImage)
+
 
         buttonTambah.setOnClickListener {
             SSLUtils.trustAllCertificates()

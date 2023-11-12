@@ -26,6 +26,6 @@ object Const {
     const val END_POINT_UPDATE_PESANAN: String = "pesanan.php?api=update"
 
     //Delete Pesanan
-    const val END_POINT_DELETE_PESANAN: String = "pesanan.php?api=delete/{id}"
+    const val END_POINT_DELETE_PESANAN: String = "customer.php?api=delete"
 
 }

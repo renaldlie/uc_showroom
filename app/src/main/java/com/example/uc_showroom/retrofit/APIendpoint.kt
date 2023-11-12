@@ -1,18 +1,22 @@
 package com.example.uc_showroom.retrofit
 
+import android.widget.EditText
 import com.example.uc_showroom.helper.Const.END_POINT_CREATE
 import com.example.uc_showroom.helper.Const.END_POINT_CREATE_PESANAN
 import com.example.uc_showroom.helper.Const.END_POINT_DELETE
+import com.example.uc_showroom.helper.Const.END_POINT_DELETE_PESANAN
 import com.example.uc_showroom.helper.Const.END_POINT_READ_PESANAN
 import com.example.uc_showroom.helper.Const.END_POINT_UPDATE
 import com.example.uc_showroom.helper.Const.END_POINT_UPDATE_PESANAN
 import com.example.uc_showroom.model.CustomerDataResponse
 import com.example.uc_showroom.model.CustomerResponse
+import com.example.uc_showroom.model.PesananData
 import com.example.uc_showroom.model.PesananDataResponse
 import com.example.uc_showroom.model.PesananResponse
 import com.google.gson.annotations.SerializedName
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
@@ -35,7 +39,7 @@ interface APIendpoint {
 
     // Create Pesanan
     @POST(END_POINT_CREATE_PESANAN)
-    fun postPesanan(@Body request: RequestPesanan): Call<CustomerResponse>
+    fun postPesanan(@Body request: RequestPesanan): Call<PesananData>
 
     // Read Pesanan
     @GET(END_POINT_READ_PESANAN)
@@ -46,8 +50,8 @@ interface APIendpoint {
     suspend fun updatePesanan(): List<PesananResponse>
 
     //Delete Pesanan
-    @POST("pesanan.php")
-    fun deletePesanan(@Query("api") api: String, @Query("id") id: Int): Call<PesananResponse>
+    @DELETE(END_POINT_DELETE_PESANAN)
+    fun deletePesanan(@Query("id_pesanan") id_pesanan: Int): Call<PesananResponse>
 
 
 
@@ -72,11 +76,10 @@ interface APIendpoint {
     )
 
             data class RequestPesanan(
-                @SerializedName("id_customer") val id_customer: String,
-                @SerializedName("id_kendaraan") val id_kendaraan: String,
-                @SerializedName("jumlah") val jumlah: Int,
-                @SerializedName("total") val total: Any,
-    )
+                @SerializedName("id_kendaraan") val id_kendaraan: Int?,
+                @SerializedName("jumlah") val jumlah: Int?,
+                @SerializedName("totalbiaya") val total: Double?
+            )
 
             data class ReadCustomer(
         @SerializedName("id") val id: String,

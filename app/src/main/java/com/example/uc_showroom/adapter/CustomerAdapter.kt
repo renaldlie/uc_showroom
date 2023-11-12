@@ -4,22 +4,24 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.uc_showroom.R
 import com.example.uc_showroom.model.CustomerData
-import com.example.uc_showroom.model.CustomerDataResponse
-import com.example.uc_showroom.model.CustomerResponse
 
-class CustomerAdapter(private val context: Context) :
+class CustomerAdapter(private val context: Context, private val editClickListener: OnEditClickListener) :
     RecyclerView.Adapter<CustomerAdapter.ViewHolder>() {
     private var dataList: List<CustomerData> = emptyList()
-
+    interface OnEditClickListener {
+        fun onEditClick(customerData: CustomerData)
+    }
     // ViewHolder class holds references to the views in each list item
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameCustomer: TextView = itemView.findViewById(R.id.namadataCustomer)
         val notelpCustomer: TextView = itemView.findViewById(R.id.notelpdataCustomer)
         val idkartuCustomer: TextView = itemView.findViewById(R.id.idkartudataCustomer)
+        val btnEdit: Button = itemView.findViewById(R.id.btnEdit)
     }
 
     // Creates new views (invoked by the layout manager)
@@ -34,6 +36,9 @@ class CustomerAdapter(private val context: Context) :
         holder.nameCustomer.text = customer.nama.toString()
         holder.notelpCustomer.text = customer.notelp.toString()
         holder.idkartuCustomer.text = customer.id_card.toString()
+        holder.btnEdit.setOnClickListener {
+            editClickListener.onEditClick(customer)
+        }
     }
 
     // Returns the size of the dataset (invoked by the layout manager)

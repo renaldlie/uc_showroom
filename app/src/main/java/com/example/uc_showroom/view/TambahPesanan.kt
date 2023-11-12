@@ -4,6 +4,7 @@ package com.example.uc_showroom.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
@@ -13,7 +14,7 @@ import com.example.uc_showroom.R
 import com.example.uc_showroom.helper.Const.BASE_URL
 import com.example.uc_showroom.helper.SSLUtils
 import com.example.uc_showroom.model.CustomerResponse
-import com.example.uc_showroom.model.PesananResponse
+import com.example.uc_showroom.model.PesananData
 import com.example.uc_showroom.retrofit.APIendpoint
 import com.google.android.material.textfield.TextInputLayout
 
@@ -36,6 +37,9 @@ class TambahPesanan : AppCompatActivity() {
     private lateinit var inputJumlahpenumpang: TextInputLayout
     private lateinit var inputManufaktur: TextInputLayout
     private lateinit var inputHarga: TextInputLayout
+    private lateinit var inputKendaraanid: TextInputLayout
+    private lateinit var inputJumlah: TextInputLayout
+    private lateinit var inputTotal: TextInputLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +56,9 @@ class TambahPesanan : AppCompatActivity() {
         inputJumlahpenumpang = findViewById(R.id.jumlahpenumpangKendaraan)
         inputManufaktur = findViewById(R.id.manufakturKendaraan)
         inputHarga = findViewById(R.id.hargaKendaraan)
-
+        inputKendaraanid = findViewById(R.id.inputKendaraanid)
+        inputJumlah = findViewById(R.id.inputJumlah)
+        inputTotal= findViewById(R.id.inputTotal)
         val autoComplete: AutoCompleteTextView = findViewById(R.id.input_jenis)
 
         val items = listOf("Mobil", "Motor", "Truck")
@@ -95,9 +101,7 @@ class TambahPesanan : AppCompatActivity() {
 
 
             val requestBody = APIendpoint.RequestCustomer("$namaCustomer", "$telpCustomer", "$idcardCustomer")
-            val requestPesanan = APIendpoint.RequestPesanan("$namaCustomer","3",20000,"2000000")
             val call = apiEndPoint.postData(requestBody)
-            val callPesan = apiEndPoint.postPesanan(requestPesanan)
 
             call.enqueue(object : Callback<CustomerResponse> {
                 override fun onResponse(
@@ -129,9 +133,33 @@ class TambahPesanan : AppCompatActivity() {
                     println("Network Failure: ${t.message}")
                     // Handle error UI update if needed
                 }
-            }
+            })
 
-            )
+            val Kendaraanid = inputKendaraanid.editText?.text.toString().toIntOrNull()
+            val Jumlah = inputJumlah.editText?.text.toString().toIntOrNull()
+            val Total = inputTotal.editText?.text.toString().toDoubleOrNull()
+
+            val requestPesanan = APIendpoint.RequestPesanan(id_kendaraan = Kendaraanid, jumlah = Jumlah, total = Total)
+            val createPesananCall = apiEndPoint.postPesanan(requestPesanan)
+            createPesananCall.enqueue(object : Callback<PesananData> {
+                override fun onResponse(call: Call<PesananData>, response: Response<PesananData>) {
+                    if (response.isSuccessful) {
+                        // Handle successful creation
+                        // You might want to update your UI or take other actions
+                    } else {
+                        // Handle error response
+                        Log.e("YourActivity", "Error: ${response.code()}")
+                        Log.e("YourActivity", "Error: ${response.body()}")
+                    }
+                }
+
+                override fun onFailure(call: Call<PesananData>, t: Throwable) {
+                    // Handle network failure
+                    Log.e("YourActivity", "Network Failure: ${t.message}")
+
+                    // Handle error UI update if needed
+                }
+            })
 
 
 

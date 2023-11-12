@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.uc_showroom.R
 import com.example.uc_showroom.adapter.PesananAdapter
 import com.example.uc_showroom.helper.Const
+import com.example.uc_showroom.model.PesananData
 import com.example.uc_showroom.model.PesananDataResponse
 import com.example.uc_showroom.model.PesananResponse
 import com.example.uc_showroom.retrofit.APIendpoint
@@ -46,7 +47,7 @@ class DetailPesanan : AppCompatActivity(), PesananAdapter.OnDeleteClickListener 
                     val pesananResponse = response.body()
                     val data = pesananResponse?.data
                     data?.let {
-                        adapter.setpesananData(it)
+                        adapter.setPesananData(it)
                     }
                 } else {
                     // Handle error response
@@ -68,7 +69,7 @@ class DetailPesanan : AppCompatActivity(), PesananAdapter.OnDeleteClickListener 
         val pesananToDelete = adapter.getItem(position)
 
         // Perform the delete operation by calling your API endpoint
-        val call = apiEndPoint.deletePesanan(api = "delete", id = pesananToDelete.id_pesanan)
+        val call = apiEndPoint.deletePesanan(pesananToDelete.id_pesanan)
 
         call.enqueue(object : Callback<PesananResponse> {
             override fun onResponse(call: Call<PesananResponse>, response: Response<PesananResponse>) {
